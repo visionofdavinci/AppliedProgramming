@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Author Bibliography Explorer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Search for an Author</h1>
+    <form action="{{ url_for('search') }}" method="post">
+        <label for="author_name">Author Name:</label>
+        <input type="text" id="author_name" name="author_name" required>
+        <button type="submit">Search</button>
+    </form>
+
+    <h2>Your Favorite Books</h2>
+    <a href="{{ url_for('favorites') }}">View Favorite Books</a>
+</body>
+</html>

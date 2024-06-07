@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ author_name }}'s Works</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h1>Books by {{ author_name }}</h1>
+    <ul>
+        {% for book in books %}
+            <li>
+                {{ book.title }} ({{ book.publication_date.year }})
+                <button class="add-favorite" data-title="{{ book.title }}">Add to Favorites</button>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('index') }}">Go Back</a>
+
+    <script>$(document).on('click', '.add-favorite', function() {
+            const bookTitle = $(this).data('title');
+            $.post('{{ url_for("add_favorite") }}', { book_title: bookTitle }, function() {
+                  alert('Added "' + bookTitle + '" to your favorite books.');
+              });
+          });
+      </script>
+  </body>
+  </html>
