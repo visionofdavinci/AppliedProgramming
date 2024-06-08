@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>{{ author_name }}'s Works</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
@@ -11,7 +11,13 @@
     <ul>
         {% for book in books %}
             <li>
-                {{ book.title }} ({{ book.publication_date.year }})
+                {{ book.title }} 
+                {% if book.year != "Unknown Year" %}
+                    ({{ book.year }})
+                {% else %}
+                    (No publication year available)
+                {% endif %}
+                <p>{{ book.description or "No description available" }}</p>
                 <button class="add-favorite" data-title="{{ book.title }}">Add to Favorites</button>
             </li>
         {% endfor %}
