@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Author Bibliography Explorer</title>
+    <title>WriterWorks</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>Search for an Author</h1>
+    <h1>WriterWorks</h1>
     <form action="{{ url_for('search') }}" method="post">
-        <label for="author_name">Author Name:</label>
+        <label for="author_name">Search an Author:</label>
         <input type="text" id="author_name" name="author_name" required>
         <button type="submit">Search</button>
     </form>
